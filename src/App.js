@@ -49,8 +49,8 @@ const App = () => {
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
-              <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-                {characters.map(({id, name, thumb}, index) => {
+              <ul className="characters" {...provided.droppableProps} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                {characters.map(({ id, name, thumb }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
@@ -59,7 +59,7 @@ const App = () => {
                             <img src={thumb} alt={`${name} Thumb`} />
                           </div>
                           <p>
-                            { name }
+                            {name}
                           </p>
                         </li>
                       )}
